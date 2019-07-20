@@ -50,6 +50,9 @@
       <video src="pictures/happy.mp4" autoplay="" loop="" muted="" playsinline class="next place bottom center"></video>
     </section>
     <section id="" class="slide label-header cover">
+      <h2>Интервью</h2>
+    </section>
+    <section id="" class="slide label-header cover">
       <h2 class="shout smaller shrink">Интересно, как ты пришел в точку, где сейчас находишься...</h2>
       <img src="pictures/background.jpg" class="cover" width="100%"/>
     </section>
@@ -57,7 +60,8 @@
       <h2 class="shout smaller shrink">Почему вы ушли с предыдущего места работы?</h2>
       <img src="pictures/background.jpg" class="cover" width="100%"/>
     </section>
-    <section id="" class="slide cover label-header">
+    <section id="" class="slide cover label-header jingle">
+      <audio id="jingle" src="/sounds/jingle.wav"></audio>
       <h2 style="position: absolute; bottom: -16px; left: 40%">Далее...</h2>
       <img src="pictures/teleport.gif" width="100%" class="cover"/>
     </section>
@@ -69,9 +73,9 @@
       <h2 class="shout smaller shrink">Сколько вы хотите на руки?</h2>
       <img src="pictures/background.jpg" class="cover" width="100%"/>
     </section>
-    <section id="" class="slide cover label-header">
+    <section id="" class="slide cover label-header jingle">
       <h2 style="position: absolute; bottom: -16px; left: 40%">Далее...</h2>
-      <img src="pictures/teleport.gif" width="100%" class="cover" />
+      <img src="pictures/teleport.gif" width="100%" class="cover"/>
     </section>
     <section id="" class="slide label-header cover">
       <h2 class="shout smaller shrink">React, Angular, Vue или Ember?</h2>
@@ -81,7 +85,7 @@
       <h2 class="shout smaller shrink">С каким стеком технологий предпочитаете работать?</h2>
       <img src="pictures/background.jpg" class="cover" width="100%"/>
     </section>
-    <section id="" class="slide cover label-header">
+    <section id="" class="slide cover label-header jingle">
       <h2 style="position: absolute; bottom: -16px; left: 40%">Далее...</h2>
       <img src="pictures/teleport.gif" width="100%" class="cover"/>
     </section>
@@ -93,9 +97,9 @@
       <h2 class="shout smaller shrink">Кем вы видите себя через 5 лет?</h2>
       <img src="pictures/background.jpg" class="cover" width="100%"/>
     </section>
-    <section id="" class="slide cover label-header">
+    <section id="" class="slide cover label-header jingle">
       <h2 style="position: absolute; bottom: -16px; left: 40%">Далее...</h2>
-      <img src="pictures/teleport.gif" width="100%" class="cover" />
+      <img src="pictures/teleport.gif" width="100%" class="cover"/>
     </section>
     <section id="" class="slide label-header cover">
       <h2 class="shout smaller shrink">Готовим вместе с фронтенд-разработчиком</h2>
@@ -105,7 +109,7 @@
       <h2 class="shout smaller shrink">Чем вы занимаетесь в свободное время, кроме разработки?</h2>
       <img src="pictures/background.jpg" class="cover" width="100%"/>
     </section>
-    <section id="" class="slide cover label-header">
+    <section id="" class="slide cover label-header jingle">
       <h2 style="position: absolute; bottom: -16px; left: 40%">Далее...</h2>
       <img src="pictures/teleport.gif" width="100%" class="cover"/>
     </section>
@@ -127,11 +131,37 @@
       <p class="end-link">Андрей Смирнов (<a href="https://twitter.com/frontendweekend" target="_blank">@frontendweekend</a>)</p>
       <img src="pictures/horse.jpg" class="cover" width="100%"/>
     </section>
-    <section id="" class="slide label-header cover">
+    <section id="" class="slide label-header cover outro">
+      <audio id="outro" src="/sounds/outro.mp3"></audio>
       <h2 class="shout shrink">Пока-пока!</h2>
       <img src="pictures/background.jpg" class="cover" width="100%"/>
     </section>
     <div class="progress"></div>
     <script src="shower/shower.min.js"></script>
+    <script type="text/javascript">
+      var intros = document.querySelectorAll('.jingle');
+      var introsVisitedCount = 0;
+
+      document.addEventListener('keyup', (e) => {
+        var currentCount = 0;
+        
+        if (e.code === "ArrowRight" || e.code === "Space") {
+          if (document.getElementsByClassName('outro')[0].classList.length === 5) {
+            document.getElementById("outro").play();
+          };
+
+          for (var i=0; i < intros.length; i++) {
+            if (intros[i].classList.contains("active")) {
+              currentCount++;
+            }
+          }
+
+          if (currentCount > introsVisitedCount) {
+            document.getElementById("jingle").play();
+            introsVisitedCount = 0;
+          }
+        }
+      });
+    </script>
   </body>
 </html>
