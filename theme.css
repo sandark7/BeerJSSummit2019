@@ -55,6 +55,13 @@
 .slide p {
   font-family: 'Pobeda', sans-serif;
 }
+td {
+  font-family: 'Pobeda', sans-serif;
+}
+th {
+  font-family: 'Pobeda', sans-serif;
+  font-weight: 900 !important;
+}
 .slide aside {
   font-family: 'Biehahinia', sans-serif;
 }
